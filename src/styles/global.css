@@ -1,0 +1,56 @@
+/* styles.css */
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+@font-face {
+    font-family: 'Apercu-Bold';
+    src: url('/fonts/Apercu Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu-Medium';
+    src: url('/fonts/Apercu Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu-Mono';
+    src: url('/fonts/Apercu Mono.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT-America-Mono-Regular';
+    src: url('/fonts/GT America-Mono-Regular-Trial.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('/fonts/MyriadPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    /* Fuentes ya proporcionadas */
+    --font-apercu-bold: 'Apercu-Bold', sans-serif;
+    --font-apercu-medium: 'Apercu-Medium', sans-serif;
+    --font-apercu-mono: 'Apercu-Mono', sans-serif;
+    --font-gt-america-mono-regular: 'GT-America-Mono-Regular', sans-serif;
+    --font-myriad-pro-regular: 'MyriadPro-Regular', sans-serif;
+
+    /* Color personalizado ya proporcionado */
+    --color-custom-yellow2: #f5f375;
+
+}

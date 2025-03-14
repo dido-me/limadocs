@@ -1,0 +1,95 @@
+---
+import Card from "../components/Card.component";
+
+const programacion = [
+  {
+    title: "INAUGURACIÓN/ CLAUSURA",
+    description:
+      "En esta primera edición nuestro esfuerzo gravita en torno a la puesta en valor del “formato menor” cinematográfico, históricamente invisibilizado: el cortometraje documental. Para elevar esta apuesta (y el foco de atención), tanto la función de apertura como la función de clausura del Festival estarían dedicados así también al cortometraje documental, también realizados por los más talentosos cineastas peruanos, pero en este caso a lo largo y ancho de la historia de este género en nuestro país (y en consonancia así también con la muestra retrospectiva de largometrajes peruanos). ",
+    thumbnail: "/publicaciones/INAUGURACIÓN_CLAUSURA.png",
+    hoverMedia: "/publicaciones/INAUGURACIÓN_CLAUSURA.png",
+  },
+  {
+    title: "COMPETENCIA_JOVEN",
+    description:
+      "La Competencia Joven destaca el trabajo de nuevos talentos emergentes en el cine peruano, brindando una plataforma para que jóvenes cineastas presenten sus obras y se conecten con audiencias y profesionales de la industria.",
+    thumbnail: "/publicaciones/COMPETENCIA_JOVEN.png",
+    hoverMedia: "/publicaciones/COMPETENCIA_JOVEN.png",
+  },
+  {
+    title: "COMPETENCIA_OFICIAL",
+    description:
+      "La Competencia Oficial presenta una selección de las mejores obras cinematográficas peruanas e internacionales, compitiendo por reconocimientos en diversas categorías, mostrando lo mejor del cine contemporáneo.",
+    thumbnail: "/publicaciones/COMPETENCIA_OFICIAL.png",
+    hoverMedia: "/publicaciones/COMPETENCIA_OFICIAL.png",
+  },
+  {
+    title: "MASTER-CLASS",
+    description:
+      "Las Master Class ofrecen una oportunidad única para aprender de cineastas y expertos de renombre, quienes compartirán sus experiencias, técnicas y perspectivas sobre el arte y la industria del cine.",
+    thumbnail: "/publicaciones/MASTER-CLASS.png",
+    hoverMedia: "/publicaciones/MASTER-CLASS.png",
+  },
+  {
+    title: "MUESTRA_INTERNACIONAL",
+    description:
+      "La Muestra Internacional trae al festival una selección de películas destacadas de todo el mundo, ofreciendo una ventana a diversas culturas, narrativas y estilos cinematográficos globales.",
+    thumbnail: "/publicaciones/MUESTRA_INTERNACIONAL.png",
+    hoverMedia: "/publicaciones/MUESTRA_INTERNACIONAL.png",
+  },
+  {
+    title: "MÚSICA_NOCTURNA",
+    description:
+      "Música Nocturna combina proyecciones de cine con presentaciones musicales en vivo, creando una experiencia inmersiva que celebra la conexión entre el sonido y la imagen en un ambiente nocturno.",
+    thumbnail: "/publicaciones/MÚSICA_NOCTURNA.png",
+    hoverMedia: "/publicaciones/MÚSICA_NOCTURNA.png",
+  },
+];
+
+const cardPublicacionOne = {
+  title: "RETROSPECTIVA_NACIONAL",
+  description:
+    "La Retrospectiva Nacional rinde homenaje a la historia del cine peruano, presentando una selección de largometrajes icónicos que han marcado hitos en la cinematografía del país a lo largo de las décadas.",
+  thumbnail: "/publicaciones/RETROSPECTIVA_NACIONAL.png",
+  hoverMedia: "/publicaciones/RETROSPECTIVA_NACIONAL.png",
+};
+---
+
+<section
+  class="flex flex-col items-center justify-center gap-[20px] md:gap-[43px] w-full py-6 md:py-12"
+>
+  <div class="flex flex-col items-center gap-[20px] md:gap-[43px] w-full">
+    <h1
+      class="text-[40px] md:text-[80px] text-center text-[#141414] font-medium font-apercu-medium"
+    >
+      PROGRAMACIÓN
+    </h1>
+    <hr class="w-full h-px" />
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container px-10"
+    >
+      {
+        programacion.map((item) => (
+          <Card
+            client:visible
+            title={item.title}
+            description={item.description}
+            thumbnail={item.thumbnail}
+            hoverMedia={item.hoverMedia}
+          />
+        ))
+      }
+
+      <div class="lg:col-start-2">
+        <Card
+          client:visible
+          title={cardPublicacionOne.title}
+          description={cardPublicacionOne.description}
+          thumbnail={cardPublicacionOne.thumbnail}
+          hoverMedia={cardPublicacionOne.hoverMedia}
+        />
+      </div>
+    </div>
+  </div>
+</section>
