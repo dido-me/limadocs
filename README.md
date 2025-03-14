@@ -15,7 +15,7 @@ LimaDocs es una página web construida con Astro y estilizada con TailwindCSS.
 
 1. Clona el repositorio:  
    ```bash
-   git clone https://github.com/username/limadocs.git
+   git clone https://github.com/dido-me/limadocs.git
    ```
 
 2. Navega al directorio del proyecto:  
