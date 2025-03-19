@@ -25,7 +25,7 @@ export default function Card({ title, description, thumbnail, hoverMedia, isVide
         onMouseLeave={() => setIsActive(false)}
       >
         <div
-          className={`w-full bg-white rounded-xl overflow-hidden shadow-lg 
+          className={`w-full bg-white overflow-hidden shadow-lg 
           transition-all duration-300 origin-center
           ${isActive ? "scale-110 shadow-xl" : ""}`}
         >
@@ -66,7 +66,7 @@ export default function Card({ title, description, thumbnail, hoverMedia, isVide
         
           {isActive && (
             <div className="bg-white">
-              <p className="p-6 text-gray-700 text-base leading-relaxed font-apercu-mono">
+              <p className="p-6 text-gray-700 text-base leading-relaxed font-apercu-mono border-b-8 border-[#8B6EA8]">
                 {description}
               </p>
             </div>
