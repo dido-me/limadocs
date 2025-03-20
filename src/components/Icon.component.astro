@@ -1,0 +1,48 @@
+---
+export type IconsName = "material-symbols-light:search-rounded" | "heroicons:bars-3";
+
+interface Props {
+  name: IconsName;
+  height?: number;
+  width?: number;
+  className?: string;
+}
+
+const defaultHeight = 24;
+const defaultWidth = 24;
+
+const ICONS: Record<IconsName, string> = {
+  "material-symbols-light:search-rounded":
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from All by undefined - undefined --><path fill="currentColor" d="M9.539 15.23q-2.398 0-4.065-1.666Q3.808 11.899 3.808 9.5t1.666-4.065T9.539 3.77t4.064 1.666T15.269 9.5q0 1.042-.369 2.017t-.97 1.668l5.909 5.907q.14.14.15.345q.009.203-.15.363q-.16.16-.354.16t-.354-.16l-5.908-5.908q-.75.639-1.725.989t-1.96.35m0-1q1.99 0 3.361-1.37q1.37-1.37 1.37-3.361T12.9 6.14T9.54 4.77q-1.991 0-3.361 1.37T4.808 9.5t1.37 3.36t3.36 1.37"/></svg>',
+  'heroicons:bars-3':
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from All by undefined - undefined --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>',
+};
+
+const getIconWithAttributes = (
+  icon: string,
+  className: string = "",
+  width: number = defaultWidth,
+  height: number = defaultHeight
+): string => {
+  return icon.replace(
+    "<svg ",
+    `<svg class="${className}" width="${width}" height="${height}" `
+  );
+};
+
+const {
+  name,
+  height = defaultHeight,
+  width = defaultWidth,
+  className = "",
+} = Astro.props as Props;
+const rawIcon = ICONS[name] || "";
+const iconWithAttributes = getIconWithAttributes(
+  rawIcon,
+  className,
+  width,
+  height
+);
+---
+
+<span set:html={iconWithAttributes} />

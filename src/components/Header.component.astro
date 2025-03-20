@@ -1,13 +1,12 @@
 ---
 import { Image } from "astro:assets";
+import Icon from "./Icon.component.astro";
 ---
 
 <header
   class="header-animate md:backdrop-blur-0 w-full mb-10 overflow-hidden z-50 py-8"
 >
-  <div
-    class="grid items-center justify-center md:justify-normal w-full grid-cols-[auto_1fr] mx-auto gap-x-10 md:flex container"
-  >
+  <div class="flex w-full mx-auto container px-5 md:px-0  items-center justify-between">
     <div class="md:flex-grow md:basis-0 flex justify-start">
       <a
         href="/"
@@ -29,7 +28,7 @@ import { Image } from "astro:assets";
             id="logo-small"
             src="/logo-amarillo-opt.BeAr9SBZ.png"
             alt="logo"
-            class="w-10 md:w-20 h-auto hidden"
+            class="w-14 md:w-20 h-auto hidden"
             loading={"eager"}
             width={600}
             height={840}
@@ -40,16 +39,28 @@ import { Image } from "astro:assets";
 
     <nav
       id="header-navbar"
-      class="col-span-full overflow-x-auto row-[2/3] grid grid-rows-[0fr] transition-[grid-template-rows] data-[open]:grid-rows-[1fr] md:justify-center md:flex group/nav"
+      class="col-span-full overflow-x-auto md:justify-center md:flex group/nav font-apercu-mono"
     >
-      <ul>
-        <li>
-          <a href="#hero" class="hover:text-custom-yellow2">Inicio</a>
+      <ul class="flex gap-4 md:gap-16 items-center data-[open]:flex md:flex">
+        <li class="border-r border-custom-yellow2 pr-2 md:pr-4">
+          <a
+            href="#"
+            class="text-custom-yellow2 hover:text-[#8B6EA8] transition-colors duration-300"
+          >
+            <Icon
+              name={"material-symbols-light:search-rounded"}
+              className="w-6 md:w-10 h-auto"
+            />
+          </a>
         </li>
         <li>
-          <a href="#programacion" class="hover:text-custom-yellow2"
-            >Programación</a
+          <a
+            href="#"
+            class="text-custom-yellow2 hover:text-[#8B6EA8] transition-colors duration-300 flex items-center"
           >
+            <Icon name={"heroicons:bars-3"} className="w-6 md:w-10 h-auto" />
+            <span class="text-lg md:text-3xl">MENÚ</span>
+          </a>
         </li>
       </ul>
     </nav>
