@@ -21,7 +21,7 @@ import { DrawerMenu } from "./DrawerMenu.component";
           <Image
             src="/icon.png"
             alt="LimaDocs"
-            class="w-10 h-10 md:w-16 md:h-16"
+            class="w-10 md:w-16 h-auto "
             loading={"eager"}
             width={64}
             height={64}
@@ -31,7 +31,7 @@ import { DrawerMenu } from "./DrawerMenu.component";
             id="logo-small"
             src="/logo-amarillo-opt.BeAr9SBZ.png"
             alt="logo"
-            class="w-14 md:w-20 h-auto hidden"
+            class="w-16 md:w-25 h-auto hidden"
             loading={"eager"}
             width={600}
             height={840}
@@ -86,54 +86,42 @@ import { DrawerMenu } from "./DrawerMenu.component";
   }
 
   @layer view-transitions {
-    * {
-      view-transition-capture-mode: flat;
-    }
+  * {
+    view-transition-capture-mode: flat;
+  }
 
-    :root {
-      view-transition-name: none;
-    }
+  :root {
+    view-transition-name: none;
+  }
 
-    ::view-transition {
-      pointer-events: none;
-    }
+  ::view-transition {
+    pointer-events: none;
+  }
 
-    :root {
-      --smooth-easing: cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  :root {
+    --smooth-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    @keyframes shrink-and-fade {
-      to {
-        transform: scale(0.5);
-        opacity: 0;
-      }
+  @keyframes grow-and-appear {
+    from {
+      opacity: 0;
     }
-
-    @keyframes grow-and-appear {
-      from {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    ::view-transition-old(logo) {
-      animation: shrink-and-fade 0.5s var(--smooth-easing);
-    }
-
-    ::view-transition-new(logo) {
-      animation: grow-and-appear 0.5s var(--smooth-easing);
-    }
-
-    ::view-transition-old(logo-reverse) {
-      animation: shrink-and-fade 0.5s var(--smooth-easing);
-    }
-
-    ::view-transition-new(logo-reverse) {
-      animation: grow-and-appear 0.5s var(--smooth-easing);
+    to {
+      opacity: 1;
     }
   }
+
+  /* Eliminamos las animaciones de los elementos antiguos para reducir la carga */
+  /* ::view-transition-old(logo) y ::view-transition-old(logo-reverse) ya no se animan */
+
+  ::view-transition-new(logo) {
+    animation: grow-and-appear 0.3s var(--smooth-easing);
+    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
+  }
+
+  ::view-transition-new(logo-reverse) {
+    animation: grow-and-appear 0.3s var(--smooth-easing);
+    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
+  }
+}
 </style>
