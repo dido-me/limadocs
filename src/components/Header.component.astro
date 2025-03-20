@@ -13,7 +13,7 @@ import { DrawerMenu } from "./DrawerMenu.component";
     <div class="md:flex-grow md:basis-0 flex justify-start">
       <a
         href="/"
-        class="ml-4 flex items-end gap-2.5 transition-transform duration-300 hover:scale-110"
+        class="ml-4 flex items-end gap-2.5 transition-transform duration-300"
         title="Ir a la página principal"
         aria-label="Ir a la página principal"
       >
@@ -21,7 +21,7 @@ import { DrawerMenu } from "./DrawerMenu.component";
           <Image
             src="/icon.png"
             alt="LimaDocs"
-            class="w-10 md:w-16 h-auto "
+            class="w-10 md:w-16 h-auto aspect-square "
             loading={"eager"}
             width={64}
             height={64}
@@ -111,17 +111,16 @@ import { DrawerMenu } from "./DrawerMenu.component";
     }
   }
 
-  /* Eliminamos las animaciones de los elementos antiguos para reducir la carga */
-  /* ::view-transition-old(logo) y ::view-transition-old(logo-reverse) ya no se animan */
+
 
   ::view-transition-new(logo) {
     animation: grow-and-appear 0.3s var(--smooth-easing);
-    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
+    will-change: opacity; 
   }
 
   ::view-transition-new(logo-reverse) {
     animation: grow-and-appear 0.3s var(--smooth-easing);
-    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
+    will-change: opacity; 
   }
 }
 </style>

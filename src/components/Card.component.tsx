@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface CardProps {
   title: string
@@ -8,9 +8,32 @@ interface CardProps {
   isVideo?: boolean
 }
 
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouch();
+    window.addEventListener('resize', checkTouch);
+    return () => window.removeEventListener('resize', checkTouch);
+  }, []);
+
+  return isMobile;
+}
+
 export default function Card({ title, description, thumbnail, hoverMedia, isVideo = false }: CardProps) {
   const [isActive, setIsActive] = useState(false)
+  const isMobile = useIsMobile();
 
+  const handlers = isMobile
+    ? { onClick: () => setIsActive(!isActive) }
+    : { 
+        onMouseEnter: () => setIsActive(true), 
+        onMouseLeave: () => setIsActive(false) 
+      };
+      
   return (
     <div className="relative w-full h-full">
 
@@ -19,8 +42,7 @@ export default function Card({ title, description, thumbnail, hoverMedia, isVide
     
       <div
         className={`absolute top-0 left-0 w-full h-full transition-all duration-300 ${isActive ? "z-20" : ""}`}
-        onMouseEnter={() => setIsActive(true)}
-        onMouseLeave={() => setIsActive(false)}
+        {...handlers}
       >
         <div
           className={`w-full bg-white overflow-hidden shadow-lg 
