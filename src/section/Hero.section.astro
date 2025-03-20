@@ -15,18 +15,24 @@ import { Image } from "astro:assets";
     class="absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-normal"
   >
     <div id="hero-logos" class="flex flex-col">
-      <img
+      <Image
         id="logo-large"
         src="/logo-full-amarillo-opt.B9k_ulXA.png"
         alt="LimaDocs"
         class="h-[300px] lg:h-[420px] w-auto object-contain hidden md:flex"
+        loading={"eager"}
+        width={600}
+        height={840}
       />
 
-      <img
+      <Image
         id="logo-medium"
         src="/logo-amarillo-opt.BeAr9SBZ.png"
         alt="LimaDocs"
         class="h-[350px] w-auto object-contain md:hidden"
+        loading={"eager"}
+        width={600}
+        height={840}
       />
 
       <div

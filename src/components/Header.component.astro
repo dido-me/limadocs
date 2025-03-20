@@ -1,3 +1,7 @@
+---
+import { Image } from "astro:assets";
+---
+
 <header
   class="header-animate md:backdrop-blur-0 w-full mb-10 overflow-hidden z-50 py-8"
 >
@@ -12,17 +16,23 @@
         aria-label="Ir a la página principal"
       >
         <h1 class="flex gap-2">
-          <img
+          <Image
             src="/icon.png"
             alt="LimaDocs"
             class="w-10 h-10 md:w-16 md:h-16"
+            loading={"eager"}
+            width={64}
+            height={64}
           />
 
-          <img
+          <Image
             id="logo-small"
             src="/logo-amarillo-opt.BeAr9SBZ.png"
             alt="logo"
             class="w-10 md:w-20 h-auto hidden"
+            loading={"eager"}
+            width={600}
+            height={840}
           />
         </h1>
       </a>
