@@ -1,12 +1,15 @@
 ---
 import { Image } from "astro:assets";
 import Icon from "./Icon.component.astro";
+import { DrawerMenu } from "./DrawerMenu.component";
 ---
 
 <header
   class="header-animate md:backdrop-blur-0 w-full mb-10 overflow-hidden z-50 py-8"
 >
-  <div class="flex w-full mx-auto container px-5 md:px-0  items-center justify-between">
+  <div
+    class="flex w-full mx-auto container px-5 md:px-0 items-center justify-between"
+  >
     <div class="md:flex-grow md:basis-0 flex justify-start">
       <a
         href="/"
@@ -53,14 +56,7 @@ import Icon from "./Icon.component.astro";
             />
           </a>
         </li>
-        <li>
-          <a
-            href="#"
-            class="text-custom-yellow2 hover:text-[#8B6EA8] transition-colors duration-300 flex items-center gap-2"
-          >
-            <Icon name={"heroicons:bars-3"} className="w-6 md:w-10 h-auto" />
-            <span class="text-lg md:text-3xl">MENÚ</span>
-          </a>
+          <DrawerMenu client:visible />
         </li>
       </ul>
     </nav>
