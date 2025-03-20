@@ -1,0 +1,122 @@
+<header
+  class="header-animate md:backdrop-blur-0 w-full mb-10 overflow-hidden z-50 py-8"
+>
+  <div
+    class="grid items-center justify-center md:justify-normal w-full grid-cols-[auto_1fr] mx-auto gap-x-10 md:flex container"
+  >
+    <div class="md:flex-grow md:basis-0 flex justify-start">
+      <a
+        href="/"
+        class="ml-4 flex items-end gap-2.5 transition-transform duration-300 hover:scale-110"
+        title="Ir a la página principal"
+        aria-label="Ir a la página principal"
+      >
+        <h1 class="flex gap-2">
+          <img
+            src="/icon.png"
+            alt="LimaDocs"
+            class="w-10 h-10 md:w-16 md:h-16"
+          />
+
+          <img
+            id="logo-small"
+            src="/logo-amarillo-opt.BeAr9SBZ.png"
+            alt="logo"
+            class="w-10 md:w-20 h-auto hidden"
+          />
+        </h1>
+      </a>
+    </div>
+
+    <nav
+      id="header-navbar"
+      class="col-span-full overflow-x-auto row-[2/3] grid grid-rows-[0fr] transition-[grid-template-rows] data-[open]:grid-rows-[1fr] md:justify-center md:flex group/nav"
+    >
+      <ul>
+        <li>
+          <a href="#hero" class="hover:text-custom-yellow2">Inicio</a>
+        </li>
+        <li>
+          <a href="#programacion" class="hover:text-custom-yellow2"
+            >Programación</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header-animate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, #1a1a1a, transparent);
+    animation: reduce-header linear both;
+    animation-timeline: scroll();
+    animation-range: 0 150px;
+  }
+
+  @keyframes reduce-header {
+    to {
+      box-shadow:
+        0 5px 50px -5px rgba(0, 99, 255, 0.1),
+        0 0 0 1px rgba(0, 140, 255, 0.1);
+      padding-block: 1rem;
+      backdrop-filter: blur(3px);
+    }
+  }
+
+  @layer view-transitions {
+    * {
+      view-transition-capture-mode: flat;
+    }
+
+    :root {
+      view-transition-name: none;
+    }
+
+    ::view-transition {
+      pointer-events: none;
+    }
+
+    :root {
+      --smooth-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes shrink-and-fade {
+      to {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes grow-and-appear {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    ::view-transition-old(logo) {
+      animation: shrink-and-fade 0.5s var(--smooth-easing);
+    }
+
+    ::view-transition-new(logo) {
+      animation: grow-and-appear 0.5s var(--smooth-easing);
+    }
+
+    ::view-transition-old(logo-reverse) {
+      animation: shrink-and-fade 0.5s var(--smooth-easing);
+    }
+
+    ::view-transition-new(logo-reverse) {
+      animation: grow-and-appear 0.5s var(--smooth-easing);
+    }
+  }
+</style>

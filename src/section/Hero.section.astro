@@ -1,19 +1,29 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section id="hero" class="relative w-full h-[100vh] overflow-hidden">
-  <img
+  <Image
     src="/hero_image.webp"
     alt="Hero Image"
     class="absolute inset-0 w-full h-full object-cover saturate-50"
+    width={1920}
+    height={1080}
+    loading={"eager"}
   />
   <div
     class="absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-normal"
   >
-    <div class="flex flex-col">
+    <div id="hero-logos" class="flex flex-col">
       <img
+        id="logo-large"
         src="/logo-full-amarillo-opt.B9k_ulXA.png"
         alt="LimaDocs"
         class="h-[300px] lg:h-[420px] w-auto object-contain hidden md:flex"
       />
+
       <img
+        id="logo-medium"
         src="/logo-amarillo-opt.BeAr9SBZ.png"
         alt="LimaDocs"
         class="h-[350px] w-auto object-contain md:hidden"
@@ -26,18 +36,90 @@
         <h3>2025</h3>
       </div>
     </div>
-    <img
+    <Image
       src="/fecha.png"
       alt="LimaDocs"
       class="h-[150px] sm:h-[200px] w-auto object-contain md:hidden mt-[-50px] sm:mt-[-30px]"
+      width={300}
+      height={420}
     />
   </div>
 </section>
 <section class="bg-[#D0C2D0] w-full relative py-10">
   <div class="mx-auto container">
-    <h1 class="text-center text-xl lg:text-2xl font-medium px-6 font-apercu-medium">
+    <h1
+      class="text-center text-xl lg:text-2xl font-medium px-6 font-apercu-medium"
+    >
       SE ABREN LAS INSCRIPCIONES PARA EL 1° FESTIVAL INTERNACIONAL DE CINE
       DOCUMENTAL EN LIMA
     </h1>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroLogos = document.getElementById("hero-logos")!;
+    const logoLarge = document.getElementById("logo-large")!;
+    const logoMedium = document.getElementById("logo-medium")!;
+    const logoSmall = document.getElementById("logo-small")!;
+
+    let isInHeader = false;
+
+    const getVisibleLogo = () => {
+      return window.innerWidth >= 768 ? logoLarge : logoMedium;
+    };
+
+    const transitionToHeader = () => {
+      if (isInHeader) return;
+      isInHeader = true;
+
+      const visibleLogo = getVisibleLogo();
+      visibleLogo.style.viewTransitionName = "logo";
+      logoSmall.style.viewTransitionName = "logo";
+
+      const transition = document.startViewTransition(() => {
+        heroLogos.classList.add("hidden");
+        logoSmall.classList.remove("hidden");
+      });
+
+      transition.finished.then(() => {
+        visibleLogo.style.viewTransitionName = "";
+        logoSmall.style.viewTransitionName = "";
+      });
+    };
+
+    const transitionToInitial = () => {
+      if (!isInHeader) return;
+      isInHeader = false;
+
+      const visibleLogo = getVisibleLogo();
+      logoSmall.style.viewTransitionName = "logo-reverse";
+      visibleLogo.style.viewTransitionName = "logo-reverse";
+
+      const transition = document.startViewTransition(() => {
+        logoSmall.classList.add("hidden");
+        heroLogos.classList.remove("hidden");
+      });
+
+      transition.finished.then(() => {
+        logoSmall.style.viewTransitionName = "";
+        visibleLogo.style.viewTransitionName = "";
+      });
+    };
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 230 && !isInHeader) {
+        transitionToHeader();
+      } else if (window.scrollY <= 230 && isInHeader) {
+        transitionToInitial();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (!isInHeader) {
+        logoSmall.classList.add("hidden");
+        heroLogos.classList.remove("hidden");
+      }
+    });
+  });
+</script>
