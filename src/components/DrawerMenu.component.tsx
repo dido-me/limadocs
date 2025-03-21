@@ -14,7 +14,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
 
   const menuItems = [
     { text: "ENVÍANOS TU CORTOMETRAJE", href: "/cortometraje" },
-    { text: "PROGRAMACIÓN", href: "/#programacion" },
+    { text: "PROGRAMACIÓN", href: "#programacion" }, // Cambiado de "/#programacion" a "#programacion"
     { text: "ENTRADAS ANTICIPADAS", href: "#" },
     { text: "QUÉ ES LIMADOCS", href: "#" },
     { text: "SÉ PARTE DEL EQUIPO", href: "#" },
@@ -29,7 +29,8 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
     <>
       <button
         onClick={showDrawer}
-        className={`${param.isStaticLogo ? "text-custom-yellow2" : "text-black"} ${param.isStaticLogo ? "hover:text-[#8B6EA8]" : "hover:text-purple-900"}  transition-colors duration-300 flex items-center gap-2 cursor-pointer`}
+        className={`${param.isStaticLogo ? "text-custom-yellow2" : "text-black"} ${param.isStaticLogo ? "hover:text-[#8B6EA8]" : "hover:text-purple-900"
+          } transition-colors duration-300 flex items-center gap-2 cursor-pointer`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +61,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
           <footer className="py-5 px-6 flex justify-between items-center w-full font-apercu-mono">
             <a
               href="#"
-              className="border-2 border-black  text-sm rounded-full px-6 py-3 uppercase font-medium
+              className="border-2 border-black text-sm rounded-full px-6 py-3 uppercase font-medium
                         transition-all duration-300
                         hover:bg-black hover:text-[#8B6EA8]
                         hover:shadow-lg
@@ -73,7 +74,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
             </a>
 
             <button
-              className="  text-sm rounded-full uppercase font-medium
+              className="text-sm rounded-full uppercase font-medium
                         transition-all duration-300
                         cursor-pointer
                         transform hover:scale-110
@@ -105,7 +106,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
             backgroundColor: "#f5f375",
             padding: 0,
             position: "relative",
-          }
+          },
         }}
       >
         <section className="font-apercu-mono">
@@ -140,6 +141,11 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
                 <a
                   href={item.href}
                   className="group font-medium uppercase flex justify-between px-8 items-center py-2 text-sm"
+                  onClick={() => {
+                    if (item.href.startsWith("#")) {
+                      onClose();
+                    }
+                  }}
                 >
                   <span className="text-custom-black">{item.text}</span>
                   <img
@@ -152,8 +158,6 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
             ))}
           </ul>
         </section>
-
-
       </Drawer>
     </>
   );
