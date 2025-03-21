@@ -1,0 +1,58 @@
+---
+import SecondFooter from "@src/components/SecondFooter.component.astro";
+import Layout from "@src/layouts/Layout.astro";
+---
+
+<Layout isStaticLogo={false} colorBackground="#D0C2D0">
+  <div class="w-full h-[92px]"></div>
+
+  <h1
+    class="font-apercu-medium font-medium text-4xl sm:text-5xl lg:text-7xl text-center my-6 md:my-12"
+  >
+    JURADOS
+  </h1>
+
+  <hr class="border-custom-black" />
+
+  <section
+    class="container mx-auto my-8 sm:my-12 lg:my-16 flex flex-col sm:flex-row font-apercu-mono"
+  >
+    <div class="w-full sm:w-3/5 px-4 md:px-0">
+      <p class="my-6 mx-4 sm:mx-6 lg:mx-10 text-xl break-words">
+        La presidenta del jurado de nuestra competencia, para esta primera
+        edición sería Nora de Izcue, quien ha cumplido los 90 años en actividad,
+        reconocida por su trabajo documental a lo largo de décadas, muy querida
+        por sus colegas. Se trata nada menos que de la primera cineasta peruana
+        —conocida también como “Madre del cine peruano”— y quien obtuvo
+        merecimiento internacional, gracias a su labor en el género documental.
+        El presidente del jurado joven es Cinesmero.
+        ________________________________
+        _________________________________________________________________
+      </p>
+    </div>
+
+    <div class="w-full sm:w-2/5 p-8 sm:p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+        <div class="aspect-square">
+          <img src="/jurados/1.png" alt="Jurados" class="w-full" />
+        </div>
+        <div class="aspect-square">
+          <img src="/jurados/2.png" alt="Jurados" class="w-full" />
+        </div>
+        <div class="aspect-square">
+          <img src="/jurados/3.png" alt="Jurados" class="w-full" />
+        </div>
+        <div class="aspect-square">
+          <img src="/jurados/4.png" alt="Jurados" class="w-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SecondFooter
+    urlRedirection="#"
+    textRedirection="SÉ PARTE DEL EQUIPO LIMA DOCS"
+    colorBackground="#D0C2D0"
+    colorTextHover="#8B6EA8"
+  />
+</Layout>

@@ -2,10 +2,19 @@
 import { Image } from "astro:assets";
 import Icon from "./Icon.component.astro";
 import { DrawerMenu } from "./DrawerMenu.component";
+
+interface Props {
+  isStaticLogo?: boolean;
+}
+
+const { isStaticLogo = true } = Astro.props as Props;
 ---
 
 <header
   class="header-animate md:backdrop-blur-0 w-full mb-10 overflow-hidden z-50 py-8"
+  style={isStaticLogo
+    ? "background:linear-gradient(to bottom, #1a1a1a, transparent)"
+    : "background:transparent"}
 >
   <div
     class="flex w-full mx-auto container px-5 md:px-0 items-center justify-between"
@@ -17,8 +26,11 @@ import { DrawerMenu } from "./DrawerMenu.component";
         title="Ir a la página principal"
         aria-label="Ir a la página principal"
       >
-        <h1 class="flex gap-2">
-          <Image
+        <div class="flex gap-2">
+          {
+            isStaticLogo ?
+            (
+            <Image
             src="/icon.png"
             alt="LimaDocs"
             class="w-10 md:w-16 h-auto object-contain"
@@ -31,12 +43,23 @@ import { DrawerMenu } from "./DrawerMenu.component";
             id="logo-small"
             src="/logo-amarillo-opt.BeAr9SBZ.png"
             alt="logo"
-            class="w-16 md:w-25 h-auto hidden"
+            class={`w-16 md:w-25 h-auto ${isStaticLogo ? "hidden" : ""}`}
             loading={"eager"}
             width={600}
             height={840}
           />
-        </h1>
+            ) : (
+              <Image
+                src="/logo_menu_sidebar.png"
+                alt="LimaDocs"
+                class="w-24 md:w-36 h-auto object-contain"
+                loading={"eager"}
+                width={64}
+                height={64}
+              />
+            )
+          }
+        </div>
       </a>
     </div>
 
@@ -45,10 +68,10 @@ import { DrawerMenu } from "./DrawerMenu.component";
       class="col-span-full overflow-x-auto md:justify-center md:flex group/nav font-apercu-mono"
     >
       <ul class="flex gap-4 md:gap-16 items-center data-[open]:flex md:flex">
-        <li class="border-r border-custom-yellow2 pr-2 md:pr-4">
+        <li class={`border-r ${isStaticLogo ? "border-custom-yellow2" : "border-black"} pr-2 md:pr-4`}>
           <a
             href="#"
-            class="text-custom-yellow2 hover:text-[#8B6EA8] transition-colors duration-300"
+            class={`${isStaticLogo ? "text-custom-yellow2" : "text-black"}  ${isStaticLogo ? "hover:text-[#8B6EA8]" : "hover:text-purple-900"} transition-colors duration-300`}
           >
             <Icon
               name={"material-symbols-light:search-rounded"}
@@ -56,8 +79,7 @@ import { DrawerMenu } from "./DrawerMenu.component";
             />
           </a>
         </li>
-          <DrawerMenu client:visible />
-        </li>
+        <DrawerMenu isStaticLogo={isStaticLogo} client:visible />
       </ul>
     </nav>
   </div>
@@ -69,7 +91,6 @@ import { DrawerMenu } from "./DrawerMenu.component";
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, #1a1a1a, transparent);
     animation: reduce-header linear both;
     animation-timeline: scroll();
     animation-range: 0 150px;
@@ -86,42 +107,42 @@ import { DrawerMenu } from "./DrawerMenu.component";
   }
 
   @layer view-transitions {
-  * {
-    view-transition-capture-mode: flat;
-  }
-
-  :root {
-    view-transition-name: none;
-  }
-
-  ::view-transition {
-    pointer-events: none;
-  }
-
-  :root {
-    --smooth-easing: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  @keyframes grow-and-appear {
-    from {
-      opacity: 0;
+    * {
+      view-transition-capture-mode: flat;
     }
-    to {
-      opacity: 1;
+
+    :root {
+      view-transition-name: none;
+    }
+
+    ::view-transition {
+      pointer-events: none;
+    }
+
+    :root {
+      --smooth-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes grow-and-appear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Eliminamos las animaciones de los elementos antiguos para reducir la carga */
+    /* ::view-transition-old(logo) y ::view-transition-old(logo-reverse) ya no se animan */
+
+    ::view-transition-new(logo) {
+      animation: grow-and-appear 0.3s var(--smooth-easing);
+      will-change: opacity; /* Ayuda al navegador a optimizar la animación */
+    }
+
+    ::view-transition-new(logo-reverse) {
+      animation: grow-and-appear 0.3s var(--smooth-easing);
+      will-change: opacity; /* Ayuda al navegador a optimizar la animación */
     }
   }
-
-  /* Eliminamos las animaciones de los elementos antiguos para reducir la carga */
-  /* ::view-transition-old(logo) y ::view-transition-old(logo-reverse) ya no se animan */
-
-  ::view-transition-new(logo) {
-    animation: grow-and-appear 0.3s var(--smooth-easing);
-    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
-  }
-
-  ::view-transition-new(logo-reverse) {
-    animation: grow-and-appear 0.3s var(--smooth-easing);
-    will-change: opacity; /* Ayuda al navegador a optimizar la animación */
-  }
-}
 </style>

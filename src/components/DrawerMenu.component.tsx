@@ -1,7 +1,7 @@
 import { Drawer } from "antd";
 import { useState } from "react";
 
-export const DrawerMenu = () => {
+export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -12,11 +12,24 @@ export const DrawerMenu = () => {
     setOpen(false);
   };
 
+  const menuItems = [
+    { text: "ENVÍANOS TU CORTOMETRAJE", href: "/cortometraje" },
+    { text: "PROGRAMACIÓN", href: "/#programacion" },
+    { text: "ENTRADAS ANTICIPADAS", href: "#" },
+    { text: "QUÉ ES LIMADOCS", href: "#" },
+    { text: "SÉ PARTE DEL EQUIPO", href: "#" },
+    { text: "JURADOS DE LA 1º EDICIÓN", href: "/jurados" },
+    { text: "PREMIOS", href: "/premios" },
+    { text: "EQUIPO", href: "#" },
+    { text: "CÓMO APOYAR / DONAR", href: "#" },
+    { text: "SEDES Y ALIANZAS", href: "#" },
+  ];
+
   return (
     <>
       <button
         onClick={showDrawer}
-        className="text-custom-yellow2 hover:text-[#8B6EA8] transition-colors duration-300 flex items-center gap-2 cursor-pointer"
+        className={`${param.isStaticLogo ? "text-custom-yellow2" : "text-black"} ${param.isStaticLogo ? "hover:text-[#8B6EA8]" : "hover:text-purple-900"}  transition-colors duration-300 flex items-center gap-2 cursor-pointer`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -122,136 +135,21 @@ export const DrawerMenu = () => {
           </div>
 
           <ul className="divide-black divide-y">
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">ENVÍANOS TU CORTOMETRAJE</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">PROGRAMACIÓN</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">ENTRADAS ANTICIPADAS</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">QUÉ ES LIMADOCS</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">SÉ PARTE DEL EQUIPO</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">JURADOS DE LA 1º EDICIÓN</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">PREMIOS</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">EQUIPO</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">CÓMO APOYAR / DONAR</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
-            <li className="py-2 sm:py-3">
-              <a
-                href="#"
-                className="group  font-medium uppercase flex justify-between px-8 items-center py-2 text-sm "
-              >
-                <span className="text-black">SEDES Y ALIANZAS</span>
-                <img
-                  src="/flecha-icon.png"
-                  alt="flecha"
-                  className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
-                />
-              </a>
-            </li>
+            {menuItems.map((item, index) => (
+              <li key={index} className="py-2 sm:py-3">
+                <a
+                  href={item.href}
+                  className="group font-medium uppercase flex justify-between px-8 items-center py-2 text-sm"
+                >
+                  <span className="text-custom-black">{item.text}</span>
+                  <img
+                    src="/flecha-icon.png"
+                    alt="flecha"
+                    className="w-6 sm:w-8 group-hover:animate-shake group-hover:animate-infinite"
+                  />
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
 

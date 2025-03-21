@@ -3,13 +3,14 @@ import Layout from "@src/layouts/Layout.astro";
 import Hero from "@src/section/Hero.section.astro";
 import Info from "@src/section/Info.section.astro";
 import InfoEquipo from "@src/section/InfoEquipo.section.astro";
+import { InfoLimaDocsSection } from "@src/section/InfoLimaDocs.section";
 import Programacion from "@src/section/Programacion.section.astro";
 ---
 
 <Layout>
   <Hero />
   <Programacion />
-  <Info />
+  <!-- <Info /> -->
+  <InfoLimaDocsSection client:visible />
   <InfoEquipo />
 </Layout>
-

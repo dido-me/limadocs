@@ -1,0 +1,72 @@
+---
+import SecondFooter from "@src/components/SecondFooter.component.astro";
+import Layout from "@src/layouts/Layout.astro";
+
+const parrafos = [
+  "LIMA DOCS se entusiasma en anunciar la apertura de inscripciones para su primera edición, que se celebrará del 22 al 25 de mayo del 2025. Este naciente evento, una de las citas más recientes del cine independiente en la región, invita a realizadores nacionales a presentar sus cortometrajes documentales.",
+  "El periodo de inscripción comienza el 20 de enero y es gratuito para todos los cortometrajes hasta el 10 de marzo del 2025. A partir del 11 y hasta el 31 de marzo, la inscripción tanto de la COMPETENCIA JOVEN como de la COMPETENCIA OFICIAL tendrá un costo de s/20.",
+  "El festival acepta cortometrajes documentales en todas sus expresiones: La obra podrá ser de tema y técnica libre, únicamente su duración deberá ser inferior a los veinte (20) minutos. Asimismo, podrá explorar las posibilidades del lenguaje cinematográfico audiovisual, las formas personales y las formas no convencionales, y podrá explorar por supuesto los límites del propio formato documental en sus infinitos subgéneros y mixturas.",
+  "El festival prioriza estrenos. Los cortometrajes nacionales que hayan sido estrenados o pre-estrenados en el país serán automáticamente descalificados, aunque el comité organizador se reserva el derecho de hacer excepciones. Los cortometrajes seleccionados no podrán ser retirados del festival ni exhibidos en el Perú antes de su presentación oficial en LIMA DOCS.",
+  "El festival contará con dos secciones competitivas de cortometrajes, la COMPETENCIA JOVEN y la COMPETENCIA OFICIAL, y serán sus mismos creadores quienes se encargarán de asignar cada obra a la categoría adecuada. Además, las personas vinculadas a las películas seleccionadas deberán mantener en confidencialidad su participación hasta el anuncio oficial por parte del festival.",
+  "La COMPETENCIA JOVEN convoca a realizadores de 18 a 25 años tanto universitarios, como de institutos y centros de estudios, así también convoca a jóvenes realizadores por fuera de instituciones, nóveles creadores de cortometrajes de corte documental. LIMA DOCS empieza a consolidarse como una plataforma fundamental para el cine documental, ofreciendo una oportunidad única para que cineastas peruanos (y de todo el mundo, en una siguiente edición del festival) presenten sus obras de corta duración (y de todas las duraciones, en una siguiente edición del festival) a la crítica especializada y a un público local y global cada vez más interesado por el cine documental.",
+];
+---
+
+<Layout isStaticLogo={false}>
+  <div class="w-full h-[92px]"></div>
+  <h1
+    class="font-apercu-medium font-medium text-4xl sm:text-5xl lg:text-7xl text-center my-6 md:my-12"
+  >
+    ENVÍANOS TU CORTOMETRAJE
+  </h1>
+  <hr class="border-custom-black" />
+  <section
+    class="container mx-auto my-8 sm:my-12 lg:my-16 flex flex-col sm:flex-row font-apercu-mono"
+  >
+    <div class="w-full sm:w-2/3 px-4 md:px-0">
+      {
+        parrafos.map((parrafo) => (
+          <p class="my-6 mx-4 sm:mx-6 lg:mx-10 text-xl">{parrafo}</p>
+        ))
+      }
+    </div>
+    <div class="w-full sm:w-1/3 p-8 sm:p-6">
+      <h3 class="font-bold mb-4">DEADLINE</h3>
+      <div class="flex flex-col gap-4 my-4 sm:my-6">
+        <a
+          href="#"
+          class="block w-full border-2 border-black text-black text-sm sm:text-base md:text-2xl rounded-full px-2 py-2 sm:px-4 sm:py-3 uppercase font-medium transition-all duration-300 hover:bg-black hover:text-custom-purple hover:shadow-lg transform hover:scale-105 active:scale-95 text-center"
+        >
+          OFICIAL : BASES
+        </a>
+        <a
+          href="#"
+          class="block w-full border-2 border-black text-black text-sm sm:text-base md:text-2xl rounded-full px-2 py-2 sm:px-4 sm:py-3 uppercase font-medium transition-all duration-300 hover:bg-black hover:text-custom-purple hover:shadow-lg transform hover:scale-105 active:scale-95 text-center"
+        >
+          OFICIAL : INSC
+        </a>
+      </div>
+      <div class="flex flex-col gap-4 my-8 sm:my-16">
+        <a
+          href="#"
+          class="block w-full border-2 border-black text-black text-sm sm:text-base md:text-2xl rounded-full px-2 py-2 sm:px-4 sm:py-3 uppercase font-medium transition-all duration-300 hover:bg-black hover:text-custom-purple hover:shadow-lg transform hover:scale-105 active:scale-95 text-center"
+        >
+          JOVEN : BASES
+        </a>
+        <a
+          href="#"
+          class="block w-full border-2 border-black text-black text-sm sm:text-base md:text-2xl rounded-full px-2 py-2 sm:px-4 sm:py-3 uppercase font-medium transition-all duration-300 hover:bg-black hover:text-custom-purple hover:shadow-lg transform hover:scale-105 active:scale-95 text-center"
+        >
+          JOVEN : INSC
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SecondFooter
+    urlRedirection="#"
+    textRedirection="COMO APOYAR / DONAR"
+    colorBackground="#8B6EA8"
+    colorTextHover="#D0C2D0"
+  />
+</Layout>

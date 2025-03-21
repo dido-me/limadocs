@@ -1,0 +1,40 @@
+---
+interface Props {
+  urlRedirection: string;
+  textRedirection: string;
+  colorBackground: string;
+  colorTextHover: string;
+}
+
+const { urlRedirection, textRedirection, colorBackground, colorTextHover } =
+  Astro.props as Props;
+---
+
+<section
+  class="flex flex-col md:flex-row font-apercu-mono"
+  style={`background-color: ${colorBackground}`}
+>
+  <div class="w-full md:w-1/2 flex justify-center items-center py-16 md:p-20">
+    <a
+      href={urlRedirection}
+      class={`border-2 border-black text-black text-sm md:text-2xl rounded-full px-6 py-3 uppercase font-medium
+              transition-all duration-300
+              hover:bg-black
+              hover:shadow-lg
+              transform hover:scale-105
+              active:scale-95
+              text-center
+              md:text-left custom-hover`}
+      style={{ "--text-color-hover": colorTextHover }}
+    >
+      {textRedirection}
+    </a>
+  </div>
+  <div class="w-full md:w-1/2 flex justify-center items-center py-16 md:p-20">
+    <img
+      src="/mascota.png"
+      alt="mascota_limadocs"
+      class="w-24 md:w-32 lg:w-[143px] h-auto object-contain"
+    />
+  </div>
+</section>
