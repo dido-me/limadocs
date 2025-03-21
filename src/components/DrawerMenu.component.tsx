@@ -14,7 +14,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
 
   const menuItems = [
     { text: "ENVÍANOS TU CORTOMETRAJE", href: "/cortometraje" },
-    { text: "PROGRAMACIÓN", href: "#programacion" }, // Cambiado de "/#programacion" a "#programacion"
+    { text: "PROGRAMACIÓN", href: "/#programacion" }, // Cambiado de "/#programacion" a "#programacion"
     { text: "ENTRADAS ANTICIPADAS", href: "#" },
     { text: "QUÉ ES LIMADOCS", href: "#" },
     { text: "SÉ PARTE DEL EQUIPO", href: "#" },
@@ -141,11 +141,7 @@ export const DrawerMenu = (param: { isStaticLogo: boolean }) => {
                 <a
                   href={item.href}
                   className="group font-medium uppercase flex justify-between px-8 items-center py-2 text-sm"
-                  onClick={() => {
-                    if (item.href.startsWith("#")) {
-                      onClose();
-                    }
-                  }}
+                  onClick={onClose}
                 >
                   <span className="text-custom-black">{item.text}</span>
                   <img
